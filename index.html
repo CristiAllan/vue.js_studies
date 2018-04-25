@@ -2,23 +2,29 @@
 <html>
     <head>
     <title>Hello World</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src='https://cdn.jsdelivr.net/npm/vue'></script>
     </head>
     <body>
-        <div id="app">
-            <button v-on:click="changeVisibility">Toggle Text</button>
-            <p v-if="visibleText">{{ message }}</p>
-            <input v-model="message"> 
+        <div id='app'>
+            <button v-on:click='changeVisibility'>Toggle Text</button>
+            <p v-if='visibleText'>{{ message }}</p>
+            <input v-model='message'> 
 
             <ol>
-                <li v-for="todo in todos">
+                <li v-for='todo in todos'>
                     {{ todo.text }}
                 </li>
             </ol>
 
-            <input v-model="item">
-            <button v-on:click="addItemToList">Add</button>
-            <button v-on:click="removeItemFromList">Remove</button>
+            <input v-model='item'>
+            <button v-on:click='addItemToList'>Add</button>
+            <button v-on:click='removeItemFromList'>Remove</button>
+        </div>
+
+        <div id='app2'>
+            <span v-bind:title='message'>
+                Pass the mouse on me to see a tip dynamically interconnected
+            </span>
         </div>
 
         <script>
@@ -45,6 +51,13 @@
                     removeItemFromList() {
                         this.todos.pop();
                     }
+                }
+            });
+
+            var app2 = new Vue({
+                el: '#app2',
+                data: {
+                    message: 'You opened this page on ' + new Date().toLocaleString()
                 }
             });
         </script>
