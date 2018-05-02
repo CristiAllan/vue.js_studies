@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Css classes</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue'></script>
+    <style type="text/css">
+      .color-blue {
+        color: blue;
+      }
+      .alo {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='app'>
+      <p :class='testClass' @click='changeSize'>Teste</p>
+      <div v-bind:id="dynamicID">teste v-bind</div>
+      <button :disabled='expression' @click='changeExpression'>my disabled button</button>
+    </div>
+
+    
+
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          testClass: [
+            'color-blue'
+          ],
+          dynamicID: 'divDinamica',
+          expression: false
+        },
+        methods: {
+          changeSize() {
+            this.testClass.push('alo')
+          },
+          changeExpression() {
+            this.expression = !this.expression
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
